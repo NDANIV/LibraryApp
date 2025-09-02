@@ -1,4 +1,6 @@
 using LibraryApp.Infrastructure;
+using LibraryApp.Domain.Interfaces;
+using LibraryApp.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Configuración EF Core
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+builder.Services.Configure<AppOptions>(builder.Configuration.GetSection("App"));
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IBookService, BookService>();
 
-// Configuración de controladores con vistas
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
