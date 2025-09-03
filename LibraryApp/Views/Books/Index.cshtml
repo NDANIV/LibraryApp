@@ -1,0 +1,30 @@
+@model List<LibraryApp.Domain.DTOs.BookDto>
+
+<h2>Lista de Libros</h2>
+<a class="btn btn-primary" asp-action="Create">Nuevo Libro</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Título</th>
+            <th>Año</th>
+            <th>Género</th>
+            <th>Páginas</th>
+            <th>AutorId</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.Id</td>
+            <td>@b.Title</td>
+            <td>@b.Year</td>
+            <td>@b.Genre</td>
+            <td>@b.Pages</td>
+            <td>@b.AuthorId</td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -2,6 +2,7 @@ using LibraryApp.Domain.DTOs;
 using LibraryApp.Domain.Entities;
 using LibraryApp.Domain.Interfaces;
 using LibraryApp.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryApp.Services;
 

@@ -1,0 +1,28 @@
+@model List<LibraryApp.Domain.DTOs.AuthorDto>
+
+<h2>Lista de Autores</h2>
+<a class="btn btn-primary" asp-action="Create">Nuevo Autor</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Fecha Nac.</th>
+            <th>Ciudad</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td>@a.Id</td>
+            <td>@a.FullName</td>
+            <td>@a.BirthDate.ToShortDateString()</td>
+            <td>@a.City</td>
+            <td>@a.Email</td>
+        </tr>
+    }
+    </tbody>
+</table>
