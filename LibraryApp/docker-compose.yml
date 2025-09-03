@@ -4,13 +4,13 @@ services:
     container_name: library_sql
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Passw0rd
+      - SA_PASSWORD=YourStrong!Passw0rd
     ports:
       - "1433:1433"
     volumes:
       - sqldata:/var/opt/mssql
     healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Passw0rd -Q 'SELECT 1' || exit 1"]
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong!Passw0rd -Q 'SELECT 1' || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -21,7 +21,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - ConnectionStrings__Default=Server=db;Database=LibraryDb;User Id=sa;Password=Passw0rd;TrustServerCertificate=True
+      - ConnectionStrings__Default=Server=db;Database=LibraryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True
       - App__MaxBooks=100
     depends_on:
       db:

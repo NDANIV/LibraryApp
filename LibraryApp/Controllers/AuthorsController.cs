@@ -7,11 +7,12 @@ namespace LibraryApp.Controllers;
 public class AuthorsController : Controller
 {
     private readonly IAuthorService _svc;
+    
     public AuthorsController(IAuthorService svc) { _svc = svc; }
-
+    // GET: Authors/Create
     [HttpGet]
     public IActionResult Create() => View();
-
+    // POST: Authors/Create
     [HttpPost]
     public async Task<IActionResult> Create(CreateAuthorDto dto)
     {
@@ -22,4 +23,12 @@ public class AuthorsController : Controller
 
         return RedirectToAction(nameof(Create));
     }
+
+    public async Task<IActionResult> Index()
+    {
+        var authors = await _svc.GetAllAsync();
+        return View(authors);
+    }
+
+
 }

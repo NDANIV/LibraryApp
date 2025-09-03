@@ -44,4 +44,10 @@ public class BooksController : Controller
             return await Create();
         }
     }
+
+    public async Task<IActionResult> Index()
+    {
+        var books = await _svc.GetAllAsync();
+        return View(books);
+    }
 }
