@@ -43,5 +43,8 @@ public class BookService : IBookService
 
         return new BookDto(e.Id, e.Title, e.Year, e.Genre, e.Pages, e.AuthorId);
     }
+
+    // Obtener todos los libros
+    Task<List<BookDto>> GetAllAsync(CancellationToken ct = default);
 }
 

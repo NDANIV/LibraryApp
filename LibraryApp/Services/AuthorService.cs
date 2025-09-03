@@ -10,6 +10,7 @@ public class AuthorService : IAuthorService
     private readonly AppDbContext _db;
     public AuthorService(AppDbContext db) { _db = db; }
 
+    // Crear autor
     public async Task<AuthorDto> CreateAsync(CreateAuthorDto dto, CancellationToken ct = default)
     {
         var e = new Author {
@@ -24,4 +25,7 @@ public class AuthorService : IAuthorService
 
         return new AuthorDto(e.Id, e.FullName, e.BirthDate, e.City, e.Email);
     }
+    
+    // Obtener todos los autores
+    Task<List<AuthorDto>> GetAllAsync(CancellationToken ct = default);
 }
