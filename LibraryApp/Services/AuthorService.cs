@@ -27,5 +27,10 @@ public class AuthorService : IAuthorService
     }
     
     // Obtener todos los autores
-    Task<List<AuthorDto>> GetAllAsync(CancellationToken ct = default);
+    public async Task<List<AuthorDto>> GetAllAsync(CancellationToken ct = default)
+    {
+        return await _db.Authors
+            .Select(e => new AuthorDto(e.Id, e.FullName, e.BirthDate, e.City, e.Email))
+            .ToListAsync(ct);
+    }
 }

@@ -45,6 +45,11 @@ public class BookService : IBookService
     }
 
     // Obtener todos los libros
-    Task<List<BookDto>> GetAllAsync(CancellationToken ct = default);
+    public async Task<List<BookDto>> GetAllAsync(CancellationToken ct = default)
+    {
+        return await _db.Books
+            .Select(e => new BookDto(e.Id, e.Title, e.Year, e.Genre, e.Pages, e.AuthorId))
+            .ToListAsync(ct);
+    }
 }
 
