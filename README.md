@@ -13,7 +13,7 @@ Aplicación ASP.NET Core MVC con Entity Framework Core y SQL Server, desarrollad
 
 ---
 
-## 📂 Estructura del proyecto
+## Estructura del proyecto
 
 ```text
 LibraryApp/
@@ -65,30 +65,48 @@ dotnet run
 ```
  **App disponible en: http://localhost:5000**
 
+## Ejecución con Docker
+
+**Construir e iniciar contenedores:**
+```bash
+ docker compose up --build
+```
+**Servicios levantados:**
+
+- library_app → App ASP.NET Core en http://localhost:8080
+
+- library_sql → SQL Server en localhost:1433
+
+**Variables de entorno definidas en docker-compose.yml:**
+
+- ConnectionStrings__Default=Server=db;Database=LibraryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True
+
+- App__MaxBooks=100
+
 ## Características principales
 **Autores**
 
--Crear autores con: Nombre completo, Fecha de nacimiento, Ciudad y Email.
+- Crear autores con: Nombre completo, Fecha de nacimiento, Ciudad y Email.
 
--Validación de campos obligatorios y formato de email.
+- Validación de campos obligatorios y formato de email.
 
--Restricción: Email único.
+- Restricción: Email único.
 
--Listado de todos los autores registrados.
+- Listado de todos los autores registrados.
 
 **Libros**
 
--Crear libros con: Título, Año, Género, Número de páginas y Autor asociado.
+- Crear libros con: Título, Año, Género, Número de páginas y Autor asociado.
 
--Validaciones de datos (campos obligatorios, rangos de año y páginas).
+- Validaciones de datos (campos obligatorios, rangos de año y páginas).
 
--Reglas de negocio:
+- Reglas de negocio:
 
--No se pueden registrar libros sin un autor válido.
+- No se pueden registrar libros sin un autor válido.
 
--Existe un máximo de libros permitidos configurable en appsettings.json.
+- Existe un máximo de libros permitidos configurable en appsettings.json.
 
--Listado de todos los libros registrados.
+- Listado de todos los libros registrados.
 
 
 ## Notas 
